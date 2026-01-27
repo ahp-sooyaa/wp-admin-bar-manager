@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>WP Admin Bar Manager</title>
+        <link rel="stylesheet" href="popup.css" />
+    </head>
+    <body>
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-left">
+                <h1 class="header-title">WP Admin Bar</h1>
+                <div class="header-status">
+                    <span id="page-context" class="context-text hidden"></span>
+                    <span class="status-separator hidden" id="status-separator"
+                        >•</span
+                    >
+                    <span id="status-indicator" class="status-text"
+                        >Checking...</span
+                    >
+                </div>
+            </div>
+            <button
+                id="settings-btn"
+                class="settings-btn"
+                title="Settings"
+                aria-label="Settings"
+            >
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                >
+                    <path
+                        d="M17.498 10c0-.497-.046-.986-.134-1.455l1.467-1.105a.75.75 0 0 0 .18-.938l-1.5-2.6a.75.75 0 0 0-.872-.337l-1.715.571a6.51 6.51 0 0 0-2.517-1.454l-.563-1.78a.75.75 0 0 0-.719-.527h-3a.75.75 0 0 0-.719.527l-.563 1.78a6.51 6.51 0 0 0-2.517 1.454l-1.715-.571a.75.75 0 0 0-.872.337l-1.5 2.6a.75.75 0 0 0 .18.938l1.467 1.105A6.47 6.47 0 0 0 2.502 10c0 .497.046.986.134 1.455l-1.467 1.105a.75.75 0 0 0-.18.938l1.5 2.6a.75.75 0 0 0 .872.337l1.715-.571a6.51 6.51 0 0 0 2.517 1.454l.563 1.78a.75.75 0 0 0 .719.527h3a.75.75 0 0 0 .719-.527l.563-1.78a6.51 6.51 0 0 0 2.517-1.454l1.715.571a.75.75 0 0 0 .872-.337l1.5-2.6a.75.75 0 0 0-.18-.938l-1.467-1.105c.088-.469.134-.958.134-1.455zM10 13.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"
+                    />
+                </svg>
+            </button>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <div id="loader" class="loader">Detecting WordPress...</div>
+            <div id="error-msg" class="error-msg hidden"></div>
+
+            <div id="content-area" class="content-area hidden">
+                <!-- QUICK ACTIONS SECTION -->
+                <div id="quick-actions-section" class="quick-actions-section">
+                    <div class="quick-actions-header">
+                        <h2 class="section-title">⚡ Quick Actions</h2>
+                        <span id="quick-actions-count" class="count-badge"
+                            >0/9</span
+                        >
+                    </div>
+                    <div id="quick-actions-grid" class="quick-actions-grid">
+                        <!-- Quick action buttons injected here -->
+                    </div>
+                    <!-- Empty State -->
+                    <div id="quick-actions-empty" class="empty-state hidden">
+                        <div class="empty-state-icon">⭐</div>
+                        <div class="empty-state-title">
+                            No Quick Actions yet
+                        </div>
+                        <div class="empty-state-hint">
+                            Pin ⭐ items to add them here
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEARCH + MENU PANEL -->
+                <div class="search-menu-panel">
+                    <div class="search-box">
+                        <input
+                            type="text"
+                            id="menu-search"
+                            placeholder="Search menu items..."
+                            aria-label="Search menu items"
+                        />
+                    </div>
+                    <div id="menu-container" class="menu-container">
+                        <!-- Menu items injected here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- SETTINGS MODAL -->
+        <div
+            id="settings-modal"
+            class="modal-backdrop hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
+        >
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <h2 id="modal-title" class="modal-title">Settings</h2>
+                    <button
+                        id="modal-close-btn"
+                        class="modal-close-btn"
+                        aria-label="Close settings"
+                    >
+                        ×
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="setting-row" id="hide-row">
+                        <label for="hide-toggle" class="setting-label"
+                            >Hide on this site</label
+                        >
+                        <label class="switch">
+                            <input type="checkbox" id="hide-toggle" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div id="backend-notice" class="notice-text hidden">
+                        Hiding disabled on Admin Dashboard
+                    </div>
+
+                    <div class="setting-row">
+                        <label for="new-tab-toggle" class="setting-label"
+                            >Open links in new tab</label
+                        >
+                        <label class="switch">
+                            <input type="checkbox" id="new-tab-toggle" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div class="setting-row">
+                        <label for="auto-focus-toggle" class="setting-label"
+                            >Auto-focus search on open</label
+                        >
+                        <label class="switch">
+                            <input type="checkbox" id="auto-focus-toggle" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div class="setting-row">
+                        <label
+                            for="numeric-shortcuts-toggle"
+                            class="setting-label"
+                            >Enable numeric shortcuts</label
+                        >
+                        <label class="switch">
+                            <input
+                                type="checkbox"
+                                id="numeric-shortcuts-toggle"
+                            />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div class="shortcut-action">
+                        <button id="change-shortcut-btn" class="shortcut-btn">
+                            ⌨️ Change keyboard shortcut…
+                        </button>
+                        <span class="shortcut-hint"
+                            >Opens Chrome shortcuts page</span
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOAST -->
+        <div id="toast" class="toast hidden">Message</div>
+
+        <script src="popup.js"></script>
+    </body>
+</html>
