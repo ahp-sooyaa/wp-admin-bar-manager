@@ -269,16 +269,6 @@ User Action → Update activeId → renderSelection()
 
 ## Development
 
-### Build
-
-This extension uses Vite for building TypeScript files:
-
-```bash
-npm install
-npm run dev    # Development mode with hot reload
-npm run build  # Production build
-```
-
 ### Project Structure
 
 ```
@@ -323,19 +313,6 @@ wp-admin-bar-manager/
 - Responsive grid layouts
 - Smooth animations (200ms modal, 150ms hovers)
 - Accessibility-friendly focus states
-
----
-
-## Browser Compatibility
-
-**Tested:**
-- Chrome 90+
-- Edge 90+ (Chromium-based)
-- Brave (Chromium-based)
-
-**Not Supported:**
-- Firefox (different extension API)
-- Safari (requires conversion to Safari extension)
 
 ---
 
@@ -384,31 +361,6 @@ wp-admin-bar-manager/
 **Solution:** Press `Esc` key to close popup reliably
 
 **Note:** Browser security prevents extensions from intercepting `Cmd+W` / `Ctrl+W`
-
----
-
-## Performance Considerations
-
-### Optimizations
-
-- **Minimal DOM queries**: Uses cached references
-- **Efficient search**: O(n × m) where n = items, m = tokens
-- **CSS animations**: GPU-accelerated transforms
-- **Lazy rendering**: Only visible items processed
-- **Smart updates**: Rebuilds only when needed
-
-### Typical Performance
-
-- **Popup open**: < 50ms
-- **Search filtering**: < 10ms for ~50 items
-- **Keyboard navigation**: < 5ms per action
-- **Storage operations**: < 20ms
-
-### Memory Usage
-
-- **Content script**: ~2MB (DOM parsing + menu data)
-- **Popup**: ~3MB (UI + cached data)
-- **Total**: ~5MB (minimal impact)
 
 ---
 
@@ -472,14 +424,6 @@ Contributions are welcome! Please:
 ## License
 
 MIT License - feel free to modify and distribute
-
----
-
-## Credits
-
-**Developer:** [Your Name]
-**Icons:** WordPress Dashicons
-**Inspiration:** Alfred, Raycast, VS Code Command Palette
 
 ---
 
