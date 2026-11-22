@@ -1,6 +1,6 @@
 # WP Admin Bar Manager
 
-A Chrome extension that enhances WordPress admin bar navigation with keyboard shortcuts, Quick Actions, and a powerful search interface.
+A Chrome extension (Manifest V3) that enhances WordPress admin bar navigation with keyboard shortcuts, Quick Actions, and a powerful search interface.
 
 ## Features
 
@@ -277,11 +277,7 @@ wp-admin-bar-manager/
 ├── popup.html            # Popup UI structure
 ├── popup.css             # Popup styles
 ├── popup.js              # Popup logic
-├── contentScript.js      # WordPress admin bar parser
-├── icons/                # Extension icons
-├── package.json          # Dependencies
-├── vite.config.ts        # Vite configuration
-└── tsconfig.json         # TypeScript configuration
+└── contentScript.js      # WordPress admin bar parser
 ```
 
 ### Key Files
@@ -408,7 +404,7 @@ Contributions are welcome! Please:
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Test thoroughly (see testing guide)
+4. Test it on a WordPress site, on both the front end and wp-admin
 5. Submit a pull request
 
 **Areas for contribution:**
@@ -423,7 +419,7 @@ Contributions are welcome! Please:
 
 ## License
 
-MIT License - feel free to modify and distribute
+[MIT](LICENSE)
 
 ---
 
@@ -432,7 +428,6 @@ MIT License - feel free to modify and distribute
 For issues, questions, or feature requests:
 - Open an issue on GitHub
 - Check the troubleshooting section above
-- Review the test checklist for expected behavior
 
 ---
 
